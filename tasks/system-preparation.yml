@@ -1,10 +1,10 @@
 ---
 
 - name: tomcat | group add
-#  group: name=taratatata
+  group: name={{ tomcat_os_group_name }}
   sudo: True
 
 
-#  - name: tomcat | user add
-#    user: name={{ tomcat_os_user_name }} group={{ tomcat_os_group_name }} home={{ tomcat_home_path }} createhome=no
-#    sudo: True
+- name: tomcat | user add
+  user: name={{ tomcat_os_user_name }} group={{ tomcat_os_group_name }} home={{ tomcat_home_path }} createhome=no
+  sudo: True

@@ -1,12 +1,15 @@
 ---
 
 - name: tomcat  | server configuration
-  template: src=server.xml.j2 dest={{tomcat_conf_dir}}/server.xml
+  template: src=server.xml.j2 dest="{{ tomcat_conf_dir }}/server.xml"
   notify: tomcat restart
+  sudo: True
 
 - name: tomcat  | users configuration
-  template: src=tomcat-users.xml.j2 dest={{tomcat_conf_dir}}/tomcat-users.xml
+  template: src=tomcat-users.xml.j2 dest="{{ tomcat_conf_dir }}/tomcat-users.xml"
   notify: tomcat restart
+  sudo: True
 
 - name: tomcat  | start
   service: name={{tomcat_service_name}} state=started enabled=yes
+  sudo: True

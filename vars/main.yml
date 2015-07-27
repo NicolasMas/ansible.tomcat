@@ -1,5 +1,5 @@
 ---
-  
+
 # system preparation
 tomcat_os_group_name:  tomcat
 tomcat_os_user_name:   tomcat
@@ -8,13 +8,13 @@ tomcat_home_path:   /usr/share/home
 
 # Tomcat binary to dl and related path
 tomcat_binary: apache-tomcat-8.0.23.tar.gz
-tomcat_binary_url:  "http://mirror.nus.edu.sg/apache/tomcat/tomcat-8/v8.0.23/bin/{{tomcat_binary}}"
+tomcat_binary_url:  "http://mirror.nus.edu.sg/apache/tomcat/tomcat-8/v8.0.23/bin/{{ tomcat_binary }}"
 tomcat_dest: /opt/
-tomcat_target_dir:  apache-tomcat-8.0.23/
-tomcat_symlink:  tomcat-latest/
+tomcat_target_dir:  apache-tomcat-8.0.23
+tomcat_symlink:  tomcat-latest
 
 # Tomcat configuration files related
-tomcat_conf_dir:  {{tomcat_dest}}{{tomcat_symlink}}conf/
+tomcat_conf_dir:  "{{ tomcat_dest }}{{ tomcat_symlink }}/conf/"
 
 # Tomcat server.xml
 # nothing for now
