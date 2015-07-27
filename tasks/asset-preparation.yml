@@ -1,0 +1,19 @@
+---
+
+  - name: tomcat | binary download
+    get_url: url={{ tomcat_binary_url }}  dest="{{ tomcat_dest }}{{ tomcat_binary }}"
+    sudo: True
+
+  - name: tomcat  | extract archive
+#    unarchive: src="{{ tomcat_dest }}{{ tomcat_binary }}" dest="{{ tomcat_dest }}{{ tomcat_target_dir }}" copy=no create=yes
+    sudo: True
+    command: chdir=/usr/share /bin/tar xvf "{{ tomcat_dest }}{{ tomcat_binary }}" -C /opt/ creates="{{ tomcat_dest }}{{ tomcat_target_dir }}"
+
+  - name: tomcat  | symlink install directory
+    file: src="{{ tomcat_dest }}{{ tomcat_target_dir }}" path="{{ tomcat_dest }}{{ tomcat_symlink }}" state=link
+    #file: src=/opt/apache-tomcat-8.0.23 path=/opt/tomcat-latest state=link
+    sudo: True
+
+  - name: tomcat  |   change ownership of target installation
+    file: path="{{ tomcat_dest }}{{ tomcat_target_dir }}" owner={{ tomcat_os_user_name }} group={{ tomcat_os_group_name }} state=directory recurse=yes
+    sudo: True

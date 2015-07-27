@@ -1,0 +1,21 @@
+[Unit]
+Description={{ tomcat_service_name }}
+After=network.target
+
+[Service]
+Type=forking
+User={{ tomcat_os_user_name }}
+Group={{ tomcat_os_group_name }}
+
+Environment=CATALINA_PID={{ tomcat_dest }}{{ tomcat_symlink }}/{{ tomcat_service_name }}.pid
+Environment=TOMCAT_JAVA_HOME=/usr/java/default
+Environment=CATALINA_HOME={{ tomcat_dest }}{{ tomcat_symlink }}
+Environment=CATALINA_BASE={{ tomcat_dest }}{{ tomcat_symlink }}
+Environment=CATALINA_OPTS=
+Environment="JAVA_OPTS=-Dfile.encoding=UTF-8 -Dnet.sf.ehcache.skipUpdateCheck=true -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:+UseParNewGC -XX:MaxPermSize=128m -Xms512m -Xmx512m"
+
+ExecStart={{tomcat_dest}}{{ tomcat_symlink }}/bin/startup.sh
+ExecStop=/bin/kill -15 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

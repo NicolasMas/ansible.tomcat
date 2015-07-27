@@ -1,0 +1,13 @@
+---
+
+  - include:  system-preparation.yml
+    tags: [tomcat]
+
+  - include:  asset-preparation.yml
+    tags: [tomcat]
+
+  - include:  service-configuration.yml
+    tags: [tomcat]
+
+  - include:  server-configuration.yml
+    tags: [tomcat]

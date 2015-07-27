@@ -1,0 +1,5 @@
+---
+  - name: tomcat  | systemd
+    template: src=tomcat.service.j2 dest=/etc/systemd/system/tomcat.service
+    notify: tomcat restart
+    sudo: True

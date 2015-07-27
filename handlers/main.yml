@@ -1,0 +1,7 @@
+---
+- name: tomcat restart
+  service: name={{ tomcat_service_name }} state=restarted
+  sudo: True
+
+#- name: restart iptables
+#  service: name=iptables state=restarted
