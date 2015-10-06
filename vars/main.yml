@@ -4,7 +4,7 @@
 tomcat_os_group_name:  tomcat
 tomcat_os_user_name:   tomcat
 tomcat_service_name:   tomcat
-tomcat_home_path:   /usr/share/home
+tomcat_home_path:   /home
 
 # Tomcat binary to dl and related path
 tomcat_binary: apache-tomcat-8.0.23.tar.gz
@@ -21,5 +21,5 @@ tomcat_conf_dir:  "{{ tomcat_dest }}{{ tomcat_symlink }}/conf/"
 
 # Tomcat users.xml
 tomcat_jenkins_username:  jenkins
-tomcat_admin_username:  servadmin
-tomcat_admin_password:  herrfunk
+tomcat_admin_username:  
+tomcat_admin_password:
